@@ -1,0 +1,66 @@
+/* 改变主题色变量 */
+$--color-primary: #00AFEF;
+$--color-text-placeholder: #b4bccc;
+// $--color-info: #FFFFFF;
+
+/* Background
+-------------------------- */
+$--background-color-base: #FAFAFA;
+
+
+/* Menu
+--------------------------*/
+//$--menu-item-color: #FFFFFF;
+$--menu-item-fill: #2B3848;
+// $--menu-item-hover-fill: rgba(0, 0, 0, 100);
+$--menu-item-hover-fill: #15202d;
+
+/* Border
+-------------------------- */
+$--border-width-base: 1px;
+$--border-style-base: solid;
+$--border-color-base: #d8dce5;
+$--border-color-light: #dfe4ed;
+$--border-color-lighter: #e6ebf5;
+$--border-color-extra-light: #edf2fc;
+$--border-color-hover: $--color-text-placeholder;
+$--border-base: $--border-width-base $--border-style-base $--border-color-base;
+$--border-radius-base: 2px;
+$--border-radius-small: 0;
+// $--border-radius-circle: 100%;
+
+/* Button
+-------------------------- */
+$--button-padding-vertical: 7px;
+$--button-padding-horizontal: 20px;
+
+$--button-default-color: #00AFEF;
+$--button-default-fill: #FFFFFF;
+$--button-default-border: #00AFEF;
+
+$--button-disabled-color: #999999;
+$--button-disabled-fill: #FFFFFF;
+$--button-disabled-border: #D9D9D9;
+
+/* Input
+-------------------------- */
+// $--input-font-size: $--font-size-base !default;
+// $--input-color: $--color-text-regular !default;
+$--input-height: 30px;
+
+/* Table
+-------------------------- */
+$--table-border:  1px solid #DDDDDD;
+$--table-text-color: #666666;
+$--table-header-color: #666666;
+$--table-row-hover-background: #E6E6E8;
+// $--table-current-row-background: #E6E6E8;
+// $--table-header-background: #000;
+// $--table-footer-background: #000;
+// $--table-fixed-box-shadow: 0 0 10px rgba(0, 0, 0, .12) !default;
+
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+@import "~element-ui/packages/theme-chalk/src/index";
+

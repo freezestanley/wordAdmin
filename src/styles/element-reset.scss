@@ -1,0 +1,145 @@
+.el-form-item {
+  margin-bottom: 16px;
+  .el-form-item__error {
+    padding-top: 1px;
+    font-size: 12px;
+  }
+  .el-form-item__content, .el-input {
+    line-height: 30px;
+    .el-input-group__append {
+      color: #666666;
+      height: 25px;
+      line-height: 28px;
+    }
+  }
+  .el-form-item__label {
+    line-height: 30px;
+  }
+  .el-date-editor {
+    &.el-date-editor--date {
+      width: 140px;
+    }
+    &.el-date-editor--datetime {
+      width: 190px;
+    }
+    &.el-date-editor--daterange {
+      width: 290px;
+    }
+    > input,
+    > i,
+    > .el-range-separator {
+      margin-top: -2px;
+      // line-height: 28px !important;
+    }
+    &.el-date-editor--date,
+    &.el-date-editor--month {
+      &.el-input {
+        padding: 0;
+        width: 140px;
+      }
+      .el-input__inner {
+        padding-left: 30px;
+      }
+    }
+  }
+  .el-select--mini {
+    font-size: 14px !important;
+    width: 95px !important;
+  }
+  .el-select--small {
+    font-size: 14px !important;
+    width: 120px !important;
+  }
+  .el-input--mini {
+    font-size: 14px !important;
+    width: 95px !important;
+    &, .el-input__inner{
+      height: 30px !important;
+    }
+    &.el-textarea {
+      width: 100% !important;
+    }
+  }
+  .el-input--small {
+    font-size: 14px !important;
+    width: 120px !important;
+  }
+  .el-input--large {
+    font-size: 14px !important;
+  }
+  .el-input__inner {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+  .el-date-editor .el-input__inner {
+    padding-left: 26px;
+  }
+}
+
+.el-table {
+  table {
+    border-collapse:inherit !important;
+    transform:translateZ(0);
+  }
+  .el-table__fixed {
+    overflow: hidden;
+  }
+  th,
+  td {
+    height: 20px;
+    padding: 8px 0;
+    .cell {
+      line-height: 18px;
+      .el-button {
+        padding: 0 !important;
+        border: 0 !important;
+      }
+    }
+  }
+  tr .cell,
+  td .cell {
+    padding-left: 5px;
+    padding-right: 5px;
+    line-height: 18px !important;
+  }
+  .el-table__fixed-header-wrapper,
+  .el-table__header-wrapper {
+    .el-table__header {
+      tr,th{
+        background-color: #F5F6FA !important;
+        font-size: 12px !important;
+      }
+    }
+  }
+  .el-table__fixed-body-wrapper,
+  .el-table__body-wrapper {
+    tr,td {
+      height: 18px !important;
+      padding: 8px 0 !important;
+      .cell {
+        font-size: 12px !important;
+        line-height: 18px !important;
+      }
+    }
+    .current-row {
+      color: #000000 !important;
+    }
+  }
+}
+
+.layout {
+  .el-menu {
+    border-right: 0;
+  }
+}
+
+div.el-pagination {
+  background-color: #FFFFFF;
+  width: 100%;
+  overflow-y: hidden;
+  padding: 10px 0;
+  text-align: center;
+  border-bottom: 1px solid #DDDDDD;
+  border-left: 1px solid #DDDDDD;
+  border-right: 1px solid #DDDDDD;
+}
