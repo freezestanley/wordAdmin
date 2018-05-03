@@ -3,6 +3,7 @@ const home = () => import('./views/home.vue');
 const account = () => import('./views/account.vue');
 const message = () => import('./views/message.vue');
 const entries = () => import('./views/entries.vue');
+const login = () => import('./views/login.vue');
 
 const routes = [
   {
@@ -16,6 +17,10 @@ const routes = [
       { path: 'entries', name: '词条管理', component: entries },
     ],
   },
+  {
+    path: '/login',
+    component: login
+  }
 ];
 
 export default routes;

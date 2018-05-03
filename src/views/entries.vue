@@ -34,13 +34,11 @@
       </el-table>
       <el-pagination
         background
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page="paging.currentPage"
-        :page-sizes="[10, 15, 20, 30]"
-        :page-size="paging.pageSize"
-        layout="total, sizes, prev, pager, next, jumper"
-        :total="paging.totalPage">
+        layout="prev, pager, next"
+        @current-change = "changePage"
+        @prev-click = "changePage"
+        @next-click = "changePage"
+        :total="paging.pageSize">
       </el-pagination>
     </el-row>
     <el-dialog title="新建账户" :visible.sync="dialogShow" width="35%">

@@ -1,0 +1,30 @@
+.layout{
+  .layout-menu{
+    position: relative;
+  }
+  .logo{
+    color:#fff;
+    text-align: center;
+    background: url('../images/logo.png') no-repeat;
+    background-size: 100%;
+    height: 200px;
+    width: 140px;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 0px;
+    left: 10px;
+    &>span{
+      position: absolute;
+      bottom:25px;
+      width: 100%;
+      left:0;
+      text-align: center;
+    }
+  }
+}
+
+.addUser{
+  .el-input.el-input--small{
+    width: 200px !important
+  }
+}

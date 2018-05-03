@@ -1,0 +1,10 @@
+let root = 'http://www.doutu66.com'
+export const IHOME = `${root}/scdc/visit`
+export const ILOGIN = `${root}/scdc/user/login`
+export const IACCOUNT = `${root}/scdc/user/search`
+export const IACCOUNTADD = `${root}/scdc/user/add`
+export const IACCOUNTDELETE = `${root}/scdc/user/remove`
+export const IBANNERGET = `${root}/scdc/banner`
+export const IBANNERGETDELETE = `${root}/scdc/banner/remove`
+export const IBANNERGETADD = `${root}/scdc/banner/add`
+export const IMESSAGEGET = `${root}/scdc/comment/list`

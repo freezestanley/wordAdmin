@@ -17,6 +17,9 @@
           </el-menu-item>
         </template>
       </el-menu>
+      <div class="logo">
+          <span>SCDC毒物数据库</span>
+        </div>
     </div>
     <div class="layout-main">
       <transition name="fade" mode="out-in">
@@ -38,3 +41,8 @@ export default {
   },
 };
 </script>
+<style lang='scss' rel="stylesheet/scss" scoped>
+.logo{
+
+}
+</style>

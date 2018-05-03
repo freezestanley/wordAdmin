@@ -1,0 +1,38 @@
+.login{
+  background: url('../images/bg1.jpg') no-repeat;
+  background-position: left bottom;
+  background-size:100%;
+  position: absolute;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  .login_box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    margin-top: -100px;
+    margin-left: -200px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    .title{
+      font-size: 20px;
+      margin: 5px 0 20px;
+      color: #333;
+      text-align: center;
+    }
+    .el-form-item .el-input.el-input--small{
+      width: 90% !important;
+    }
+    input{
+      width: 100%;
+    }
+    .dialog-footer .el-button--primary{
+      width: 80%;
+      margin: 0 10%;
+    }
+  }
+}

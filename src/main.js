@@ -7,9 +7,15 @@ import routes from './routes';
 import './styles/global.scss';
 import './styles/element-reset.scss';
 import './styles/element-variables.scss';
+import './styles/layout.scss';
+import './styles/login.scss';
+import axioshttp from './widget/http';
+import toast from './plugin/toast'
 
 Vue.config.productionTip = false;
+Vue.use(axioshttp);
 Vue.use(VueRouter);
+Vue.use(toast)
 Vue.use(ElementUI, { size: 'small' });
 const router = new VueRouter({
   routes,
