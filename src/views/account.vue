@@ -56,10 +56,10 @@
     <el-dialog :title="diastate == 1 ? '新建账户' : '修改账户'" :visible.sync="dialogShow" width="400px" class="addUser">
       <el-form :model="form" label-width="110px">
         <el-form-item label="姓名">
-          <el-input v-model="form.username" maxlength="20"></el-input>
+          <el-input v-model="form.username" maxlength="20" placeholder="4-20字母或数字组合"></el-input>
         </el-form-item>
         <el-form-item label="密码">
-          <el-input maxlength="11" v-model="form.password"></el-input>
+          <el-input maxlength="8" v-model="form.password" placeholder="6-8位数字或字母"></el-input>
         </el-form-item>
         <el-form-item label="身份">
           <el-radio v-model="form.userType" label="USER">会员</el-radio>
@@ -76,6 +76,7 @@
 
 <script>
 import { IACCOUNT, IADDACCOUNT, IACCOUNTADD, IACCOUNTDELETE } from '@/api'
+import validate from '@/widget/validate'
 export default {
   data() {
     return {
@@ -151,7 +152,7 @@ export default {
       })
     },
     submit () {
-      if (!this.form.username || !this.form.userType || !this.form.password){
+      if (!validate.name(this.form.username) || !this.form.userType || !validate.pwd(this.form.password)){
         this.$toast.show({'text': '请正确填写用户信息'})
         return
       }
@@ -159,14 +160,10 @@ export default {
       this.axios.get(`${IACCOUNTADD}?username=${this.form.username}&userType=${this.form.userType}&password=${this.form.password}`).then(res => {
         this.dialogShow = false
         load.close()
-        if (res.data.status == 'true') {
-          this.tableData = dt.data.data
+        if (res.data.status) {
+          this.tableData = res.data.data
         } else {
           this.$toast.show({'text': res.data.errorMsg})
-          // this.$message({
-          //   message: res.data.errorMsg,
-          //   type: 'success'
-          // })
         }
       }).catch(err => {
         throw new Error(err)
@@ -249,7 +246,7 @@ export default {
     deleteHandler (id) {
       debugger
       let load = this.$loading({ fullscreen: true })
-      this.axios.get(`${IACCOUNTDELETE}?id=${this.searchData.keyword}`).then(res => {
+      this.axios.get(`${IACCOUNTDELETE}?id=${id}`).then(res => {
         load.close()
         if (res.data.status) {
           this.tableData = res.data.data

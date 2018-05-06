@@ -1,9 +1,9 @@
 <template>
-  <div>
+  <div class="information">
     <el-row>
       <el-form :model="searchData" ref="searchData" :inline="true">
         <el-form-item>
-          <el-date-picker type="daterange" range-separator="-" start-placeholder="开始时间" end-placeholder="截止时间" v-model="dateValue" value-format="yyyyMMdd"></el-date-picker>
+          <el-date-picker type="daterange" range-separator="-" start-placeholder="开始时间" end-placeholder="截止时间" v-model="dateValue"  value-format="yyyyMMdd"></el-date-picker>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="searchHandler">查询</el-button>
@@ -24,11 +24,11 @@
         style="width:100%">
         <el-table-column type="index" width="35" align="center" label="序"></el-table-column>
         <el-table-column prop="comment" label="信息内容"></el-table-column>
-        <el-table-column prop="realname" label="用户姓名"></el-table-column>
-        <el-table-column prop="mobile" label="联系电话"></el-table-column>
-        <el-table-column prop="email" label="邮箱"></el-table-column>
+        <el-table-column prop="usernick" label="留言作者"></el-table-column>
+        <el-table-column prop="replycomment" label="回复"></el-table-column>
         <el-table-column align="center" label="操作" width="150">
           <template slot-scope="scope">
+            <el-button @click="editHandler(scope.row)" type="text" size="small">回复</el-button>
             <el-button @click="deleteHandler(scope.row.id)" type="text" size="small">删除</el-button>
           </template>
         </el-table-column>
@@ -42,11 +42,28 @@
         :total="paging.pageSize">
       </el-pagination> -->
     </el-row>
+
+    <el-dialog title="回复留言" :visible.sync="dialogShow" width="400px" class="addUser">
+      <el-form :model="form" label-width="110px">
+        <div class="replayDia">
+          <div class="title">{{form.comment}}</div>
+          <div class="nickname">{{form.nickname}}</div>
+        </div>
+        <div>回复</div>
+        <el-input type="textarea" v-model="form.desc"></el-input>
+        
+      </el-form>
+      <div slot="footer" class="dialog-footer">
+        <el-button @click="cancalhandle">取 消</el-button>
+        <el-button type="primary" @click="submit">确 定</el-button>
+      </div>
+    </el-dialog>
   </div>
 </template>
 
 <script>
-import { IMESSAGEGET, IMESSAGEDELETE} from '@/api'
+import { IMESSAGEGET, IMESSAGEDELETE, IMESSAGEADD} from '@/api'
+import validate from '@/widget/validate'
 export default {
   data() {
     return {
@@ -59,7 +76,14 @@ export default {
         currentPage: 1,
         pageSize: 10,
       },
-      dateValue: null
+      dateValue: null,
+      dialogShow: false,
+      form: {
+        desc:null,
+        comment: null,
+        nickname: null,
+        id: null
+      }
     };
   },
   created() {
@@ -78,7 +102,7 @@ export default {
   methods: {
     init () {
       let load = this.$loading({ fullscreen: true })
-      this.axios.get(`${IMESSAGEGET}?posionId=999999`).then(res => {
+      this.axios.get(`${IMESSAGEGET}?posionId=999998`).then(res => {
         if (res.data.status) {
           this.tableData = res.data.data
         } else {
@@ -136,16 +160,45 @@ export default {
         throw new Error(err)
       })
     },
-    handleCurrentChangeTable(val) {
-      if (!val) {
-        this.currentRow = {};
-      } else {
-        this.currentRow = val;
+    cancalhandle (obj) {
+      this.dialogShow = false
+      this.form.comment = null
+      this.form.nickname = null
+      this.form.desc = null
+      this.form.id = null
+    },
+    editHandler (obj) {
+      debugger
+      this.dialogShow = true
+      this.form.comment = obj.comment
+      this.form.nickname = obj.usernick
+      this.form.id = obj.id
+    },
+    submit () {
+      if (validate.trimStr(this.form.desc).length <= 0) {
+        return this.$toast.show({'text': `请输入您的回复`})
       }
+      this.dialogShow = false
+      let load = this.$loading({ fullscreen: true })
+      this.axios.get(`${IMESSAGEADD}?replyId=${this.form.id}&posionId=999998&comment=${this.form.desc}`).then(res => {
+        if (res.data.status) {
+          this.tableData = res.data.data
+          this.form.comment = null
+          this.form.nickname = null
+          this.form.desc = null
+          this.form.id = null
+        } else {
+          this.$toast.show({'text': `${res.data.errorMsg}`})
+        }
+        load.close()
+      }).catch(err => {
+        throw new Error(err)
+      })
     }
   },
 };
 </script>
 
 <style scoped>
+
 </style>

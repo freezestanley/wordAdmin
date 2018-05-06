@@ -8,3 +8,13 @@ export const IBANNERGET = `${root}/scdc/banner`
 export const IBANNERGETDELETE = `${root}/scdc/banner/remove`
 export const IBANNERGETADD = `${root}/scdc/banner/add`
 export const IMESSAGEGET = `${root}/scdc/comment/list`
+export const IMESSAGEDELETE = `${root}/scdc/comment/delete`
+export const IMESSAGEADD = `${root}/scdc/comment/add`
+export const IDRUGLISTGET = `${root}/scdc/content/category`
+export const ICATEGORYADD = `${root}/scdc/content/category`
+export const IMODIFYPASSWORD = `${root}/scdc/user/modify`
+// 类型
+export const ICATEGORY = `${root}/scdc/content/category`
+export const IWORDLISTGET = `${root}/scdc/content/list`
+export const IWORDREMOVE = `${root}/scdc/content/remove`
+export const IWORDSEARCH = `${root}/scdc/content/search`

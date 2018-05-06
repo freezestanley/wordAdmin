@@ -34,7 +34,8 @@ a:hover {
     display: flex;
     .layout-menu {
         width: 180px;
-        height: 100vh;
+        // height: 100vh;
+        min-height: 100vh;
         overflow-x: hidden;
         transition: width .2s;
         background-color: #2B3848;
@@ -45,5 +46,26 @@ a:hover {
         transition: width .2s;
         background-color: #FAFAFA;
         padding: 15px;
+    }
+}
+.information{
+    .replayDia {
+        & > .title {
+          font-size: 14px;
+        }
+        & > .nickname {
+          font-size: 12px;
+          border-top: 1px dotted #999;
+        }
+        margin-bottom: 10px;
+    }
+}
+.entries_box{
+    .el-form-item .el-select--small {
+        font-size: 14px !important;
+        width: 100% !important;
+    }
+    .el-form-item .el-input--small{
+        width: 100% !important;
     }
 }

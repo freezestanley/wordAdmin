@@ -121,8 +121,8 @@ export default {
       this.dialogShow = true
     },
     submit () {
-      debugger
-      console.log(this.$refs.uploadimg.files)
+      // debugger
+      // console.log(this.$refs.uploadimg.files)
       var _self = this
       var reader = new FileReader();
       reader.onload = function(e){
