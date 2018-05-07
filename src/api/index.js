@@ -18,3 +18,4 @@ export const ICATEGORY = `${root}/scdc/content/category`
 export const IWORDLISTGET = `${root}/scdc/content/list`
 export const IWORDREMOVE = `${root}/scdc/content/remove`
 export const IWORDSEARCH = `${root}/scdc/content/search`
+export const IWORDADD = `${root}/scdc/content/add`

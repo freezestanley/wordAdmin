@@ -75,7 +75,7 @@
 </template>
 
 <script>
-import { IWORDLISTGET, ICATEGORY, IWORDREMOVE } from '@/api'
+import { IWORDLISTGET, ICATEGORY, IWORDREMOVE, IWORDADD } from '@/api'
 import validate from '@/widget/validate'
 export default {
   data() {
@@ -95,6 +95,7 @@ export default {
       category: null,
       form: {
         entry: '',
+        region: null
       },
     };
   },
@@ -176,8 +177,9 @@ export default {
       let formdata = new FormData();
       formdata.append('file',this.$refs.uploadimg.files[0]);
       formdata.append('action','test');
+      formdata.append('type',this.form.region);
       this.axios({
-          url:'test.php',
+          url: IWORDADD,
           method:'post',
           data:formdata,
           headers: {'Content-Type': 'application/x-www-form-urlencoded'}
