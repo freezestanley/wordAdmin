@@ -44,6 +44,9 @@
     </el-row>
     <el-dialog title="添加词条" :visible.sync="dialogShow" width="35%">
       <el-form :model="form" label-width="80px">
+        <el-form-item label="casNo">
+          <el-input v-model="form.casNo" placeholder="casNo" maxlength="30" clearable auto-complete="off"/>
+        </el-form-item>
         <el-form-item label="选择类别">
           <el-select v-model="form.region" placeholder="请选择词条类别">
             <template v-for="(item,index) in category" keys="index">
@@ -51,6 +54,8 @@
             </template>
           </el-select>
         </el-form-item>
+
+        
         <input ref="uploadimg" id="uploadimg" type="file" accept="application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
         <!-- <el-upload
           class="upload-demo"
@@ -95,7 +100,8 @@ export default {
       category: null,
       form: {
         entry: '',
-        region: null
+        region: null,
+        casNo: null
       },
     };
   },
@@ -172,12 +178,14 @@ export default {
     },
     showDialog () {
       this.dialogShow = true
+      this.form.casNo = null
     },
     submitHandler () {
       let formdata = new FormData();
       formdata.append('file',this.$refs.uploadimg.files[0]);
       formdata.append('action','test');
       formdata.append('type',this.form.region);
+      formdata.append('casNo',this.form.casNo);
       this.axios({
           url: IWORDADD,
           method:'post',
@@ -185,6 +193,7 @@ export default {
           headers: {'Content-Type': 'application/x-www-form-urlencoded'}
       }).then( res => {
         this.dialogShow = false
+        this.form.casNo = null
         if (res.data.status) {
           this.tableData = res.data.data
         }
