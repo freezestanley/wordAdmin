@@ -34,7 +34,7 @@ export default {
     submit () {
       this.axios.get(`${ILOGIN}?username=${this.form.loginName}&password=${this.form.loginPassword}`).then(response => {
         if (response.data.status) {
-          this.$router.push({path: '/home'})
+          this.$router.push({path: '/inner'})
         } else {
           this.$toast.show({'text': `${response.data.errorMsg}`})
         }

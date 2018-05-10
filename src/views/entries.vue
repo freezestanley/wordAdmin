@@ -80,7 +80,7 @@
 </template>
 
 <script>
-import { IWORDLISTGET, ICATEGORY, IWORDREMOVE, IWORDADD } from '@/api'
+import { IWORDLISTGET, ICATEGORY, IWORDREMOVE, IWORDADD, IWORDSEARCH } from '@/api'
 import validate from '@/widget/validate'
 export default {
   data() {

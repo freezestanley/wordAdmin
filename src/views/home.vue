@@ -23,7 +23,7 @@
         </el-card>
       </el-col>
     </el-row>
-    <div>
+    <!-- <div>
       <div class="title">Banner管理</div>
       <ul class="bannerlist">
         <li v-for="(item, index) in bannerlist">
@@ -59,7 +59,7 @@
       </el-dialog>
 
 
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -89,11 +89,11 @@ export default {
     this.axios.post(IHOME).then(res => {
       if (res.data.status) {
         this.mpv = res.data.data.month.pv
-        this.muv = res.data.data.month.pv
+        this.muv = res.data.data.month.uv
         this.wpv = res.data.data.week.pv
-        this.wuv = res.data.data.week.pv
+        this.wuv = res.data.data.week.uv
         this.dpv = res.data.data.day.pv
-        this.duv = res.data.data.day.pv
+        this.duv = res.data.data.day.uv
       } else {
         this.$toast.show({'text': `${res.data.errorMsg}`})
       }
