@@ -47,6 +47,9 @@
         <el-form-item label="casNo">
           <el-input v-model="form.casNo" placeholder="casNo" maxlength="30" clearable auto-complete="off"/>
         </el-form-item>
+        <el-form-item label="配图">
+          <el-input v-model="form.imgurl" placeholder="配图地址" maxlength="30" clearable auto-complete="off"/>
+        </el-form-item>
         <el-form-item label="选择类别">
           <el-select v-model="form.region" placeholder="请选择词条类别">
             <template v-for="(item,index) in category" keys="index">
@@ -101,7 +104,8 @@ export default {
       form: {
         entry: '',
         region: null,
-        casNo: null
+        casNo: null,
+        imgurl: null
       },
     };
   },
@@ -181,10 +185,14 @@ export default {
       this.form.casNo = null
     },
     submitHandler () {
+      if (!this.$refs.uploadimg.files[0] || !this.form.region || !this.form.imgurl || !this.form.casNo) {
+        return this.$toast.show({'text': `请填写完整信息`})
+      }
       let formdata = new FormData();
       formdata.append('file',this.$refs.uploadimg.files[0]);
       formdata.append('action','test');
       formdata.append('type',this.form.region);
+      formdata.append('imgurl',this.form.imgurl);
       formdata.append('casNo',this.form.casNo);
       this.axios({
           url: IWORDADD,
