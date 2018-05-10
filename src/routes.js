@@ -18,8 +18,8 @@ const routes = [
     children: [
       { path: 'home', name: '首页', component: home },
       { path: 'account', name: '账户管理', component: account },
-      { path: 'information', name: '客服信息', component: information },
-      { path: 'message', name: '留言管理', component: message },
+      { path: 'information', name: '词条留言', component: information },
+      { path: 'message', name: '客服留言', component: message },
       // { path: 'type', name: '毒物管理', component: drug },
       { path: 'entries', name: '词条管理', component: entries },
     ],
